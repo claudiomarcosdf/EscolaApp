@@ -1,9 +1,9 @@
-const { actions } = require('react-redux-toastr');
-
 const VISIBLE_MODAL = 'VISIBLE_MODAL';
+const ACTUAL_MODAL = 'ACTUAL_MODAL';
 
 const initialState = {
   visible: false,
+  modalName: '',
 };
 
 const reducer = (state = initialState, action) => {
@@ -12,6 +12,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         visible: action.payload,
+      };
+
+    case ACTUAL_MODAL:
+      return {
+        ...state,
+        modalName: action.payload,
       };
 
     default:

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -16,9 +17,13 @@ import Button from '@material-ui/core/Button';
 import _ from 'lodash';
 import moment from 'moment';
 import * as format from '../../helpers/formatHelpers';
+import { visibleModal } from '../../views/Modal/modalActions';
+import RegisterOccurrenceModal from './occurrence/RegisterOccurrenceModal';
 
-export default function StudentOcorrencias(props) {
+export default function StudentOccurrences(props) {
   const { ocorrencias } = props;
+  const modal = useSelector((state) => state.modal);
+  const dispatch = useDispatch();
 
   const ocorrenciasSorted = ocorrencias.sort((a, b) => {
     const aData = moment(a.data, 'DD-MM-YYYY').toDate();
@@ -32,9 +37,17 @@ export default function StudentOcorrencias(props) {
     console.log(value);
   };
 
+  const handleNewOccurrence = () => {
+    dispatch(visibleModal(true));
+  };
+
+  const handleCloseModal = () => {
+    dispatch(visibleModal(false));
+  };
+
   const classes = useStyles();
   return (
-    <>
+    <div id="main-occurrence">
       <Grid item xs={12} sm={12} md={12}>
         <Button
           variant="contained"
@@ -42,6 +55,7 @@ export default function StudentOcorrencias(props) {
           size="small"
           className={classes.button}
           startIcon={<IconAdd />}
+          onClick={handleNewOccurrence}
         >
           Nova ocorrência
         </Button>
@@ -87,7 +101,7 @@ export default function StudentOcorrencias(props) {
                             hadleDelete(event, ocorrencia._id)
                           }
                         >
-                          <IconDelete color="error" fontSize="medium" />
+                          <IconDelete color="error" />
                         </IconButton>
                       </StyledTableCell>
                     </StyledTableRow>
@@ -98,7 +112,16 @@ export default function StudentOcorrencias(props) {
           </TableContainer>
         </div>
       </Grid>
-    </>
+      {/* Modal here! */}
+      <div>
+        {modal.visible && (
+          <RegisterOccurrenceModal
+            onClose={handleCloseModal}
+            open={modal.visible}
+          />
+        )}
+      </div>
+    </div>
   );
 }
 

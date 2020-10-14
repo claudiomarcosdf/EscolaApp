@@ -23,9 +23,8 @@ import {
   fetchStudents,
   currentStudent,
 } from '../../views/Student/studentActions';
-import { visibleModal, actualModal } from '../../views/Modal/modalActions';
-import ReactModal from 'components/Modal/ReactModal';
-import RegisterStudent from '../StudentDasboard/RegisterStudent';
+import { visibleModal } from '../../views/Modal/modalActions';
+import ModalRegisterStudent from '../StudentDasboard/RegisterStudentModal';
 
 export default function FindStudent() {
   const classes = useStyles();
@@ -67,9 +66,12 @@ export default function FindStudent() {
 
   const handlerCreateNewStudent = (event) => {
     dispatch(currentStudent({}));
-    dispatch(actualModal('Student'));
     dispatch(visibleModal(true));
   };
+
+  // const handlePersistNewStudent = (StudentToPersist) => {
+  //   dispatch(addStudent(StudentToPersist));
+  // };
 
   return (
     <>
@@ -132,12 +134,15 @@ export default function FindStudent() {
         </List>
       </div>
 
-      {modal.modalName === 'Student' && (
-        <ReactModal open={modal.visible}>
-          {console.log('FIND')}
-          <RegisterStudent onClose={handleCloseModal} />
-        </ReactModal>
-      )}
+      <div>
+        {modal.visible && (
+          <ModalRegisterStudent
+            onClose={handleCloseModal}
+            open={modal.visible}
+            // onSave={handlePersistNewStudent}
+          />
+        )}
+      </div>
     </>
   );
 }

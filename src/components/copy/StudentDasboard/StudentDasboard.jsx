@@ -24,7 +24,7 @@ export default function StudentDasboard() {
 
   return (
     <>
-      {!_.isEmpty(student._id) && (
+      {!_.isEmpty(student) && (
         <GridContainer>
           <GridItem xs={12} sm={12} md={6}>
             <div className={classes.root}>

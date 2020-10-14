@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-export default function StudentDadosPessoais(props) {
+export default function StudentPersonalData(props) {
   const dados_pessoais = props.dados_pessoais;
 
   const { cpf, rg, email } = dados_pessoais;

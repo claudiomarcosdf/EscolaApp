@@ -1,6 +1,6 @@
 import * as api from '../../services/apiService';
 import { toastr } from 'react-redux-toastr';
-import { visibleModal } from './Modal/modalActions';
+import { visibleModal } from '../Modal/modalActions';
 import { fetchCountStudents } from '../Dashboard/dashboardActions';
 
 import {

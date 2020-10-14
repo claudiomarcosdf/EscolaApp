@@ -90,6 +90,26 @@ async function getBehaviorStudents() {
   return response;
 }
 
+async function addOccurrence(idStudent, occurrence) {
+  const uri = `ocorrencia?id=${idStudent}`;
+  const response = await axios.post(`${BASE_URL}/alunos/${uri}`, occurrence);
+
+  if (response.status != 200) {
+    throw Error(response.Error);
+  }
+  return response;
+}
+
+async function deleteOccurrence(idOccurrence) {
+  const uri = `ocorrencia?id=${idOccurrence}`; //ID da ocorrência
+  const response = await axios.delete(`${BASE_URL}/alunos/${uri}`);
+
+  if (response.status != 200) {
+    throw Error(response.Error);
+  }
+  return response;
+}
+
 export {
   getStudents,
   createStudent,
@@ -98,4 +118,6 @@ export {
   getCountOccurrence,
   getResumeOccurrences,
   getBehaviorStudents,
+  addOccurrence,
+  deleteOccurrence,
 };

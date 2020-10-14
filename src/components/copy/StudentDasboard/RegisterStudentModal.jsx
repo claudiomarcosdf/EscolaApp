@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
+import Modal from 'react-modal';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Stepper from '@material-ui/core/Stepper';
@@ -19,17 +20,25 @@ import {
   editStudent,
 } from '../../views/Student/studentActions';
 
-export default function RegisterStudentModal({ onClose }) {
+Modal.setAppElement('#root');
+
+export default function RegisterStudentModal({ onClose, open }) {
   const [errorMessage, setErrorMessage] = useState('');
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
 
   const student = useSelector((state) => state.student.student);
+  // guardo o estado caso o usuário cancele a operação devolvo o objeto original (novo ou edição)
+  const [originalStudent, setOriginalStudent] = useState(student);
   const dispatch = useDispatch();
 
   if (_.isEmpty(student)) {
     dispatch(currentStudent(newStudent));
   }
+
+  const closeModalAfterSave = () => {
+    onClose(null);
+  };
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -40,11 +49,7 @@ export default function RegisterStudentModal({ onClose }) {
   };
 
   const handleModalClose = () => {
-    if (student._id) {
-      dispatch(currentStudent(student));
-    } else {
-      dispatch(currentStudent({}));
-    }
+    dispatch(currentStudent(originalStudent));
 
     onClose(null);
   };
@@ -62,54 +67,56 @@ export default function RegisterStudentModal({ onClose }) {
   const classes = useStyles();
   return (
     <div>
-      <div style={styles.flexRow}>
-        <Typography variant="h5">Cadastro de aluno</Typography>
-      </div>
-
-      <div className={classes.root}>
-        <Stepper activeStep={activeStep} alternativeLabel>
-          {steps.map((label) => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-        <div>
-          {activeStep === steps.length ? (
-            <div>{handleSave()}</div>
-          ) : (
-            <div>
-              <div className={classes.fixedSizeBody}>
-                {/* #### Componentes do Cadastro #### */}
-                {getStepContent(activeStep)}
-              </div>
-              <div className={classes.adjustMargins}>
-                <Button
-                  disabled={activeStep === 0}
-                  onClick={handleBack}
-                  className={classes.backButton}
-                >
-                  Anterior
-                </Button>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleNext}
-                >
-                  {activeStep === steps.length - 1 ? 'Salvar' : 'Próximo'}
-                </Button>
-              </div>
-            </div>
-          )}
+      <Modal style={styles} isOpen={open}>
+        <div style={styles.flexRow}>
+          <Typography variant="h5">Cadastro de aluno</Typography>
         </div>
-      </div>
 
-      <div style={styles.flexRow}>
-        <span style={styles.errorMessage}>{errorMessage}</span>
-        <Button color="primary" onClick={handleModalClose}>
-          Sair
-        </Button>
-      </div>
+        <div className={classes.root}>
+          <Stepper activeStep={activeStep} alternativeLabel>
+            {steps.map((label) => (
+              <Step key={label}>
+                <StepLabel>{label}</StepLabel>
+              </Step>
+            ))}
+          </Stepper>
+          <div>
+            {activeStep === steps.length ? (
+              <div>{handleSave()}</div>
+            ) : (
+              <div>
+                <div className={classes.fixedSizeBody}>
+                  {/* #### Componentes do Cadastro #### */}
+                  {getStepContent(activeStep)}
+                </div>
+                <div className={classes.adjustMargins}>
+                  <Button
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                    className={classes.backButton}
+                  >
+                    Anterior
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleNext}
+                  >
+                    {activeStep === steps.length - 1 ? 'Salvar' : 'Próximo'}
+                  </Button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div style={styles.flexRow}>
+          <span style={styles.errorMessage}>{errorMessage}</span>
+          <Button color="primary" onClick={handleModalClose}>
+            Sair
+          </Button>
+        </div>
+      </Modal>
     </div>
   );
 }

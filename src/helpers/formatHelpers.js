@@ -4,8 +4,8 @@ function formatCurrency(value) {
 
 function formatNumber(value) {
   return value.toLocaleString('pt-BR', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
   });
 }
 

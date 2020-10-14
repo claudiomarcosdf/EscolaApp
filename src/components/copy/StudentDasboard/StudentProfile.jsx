@@ -15,9 +15,8 @@ import Fab from '@material-ui/core/Fab';
 import _ from 'lodash';
 import avatar from 'assets/img/faces/3.jpg';
 import * as format from '../../helpers/formatHelpers';
-import ReactModal from '../Modal/ReactModal';
-import RegisterStudent from './RegisterStudent';
-import { visibleModal, actualModal } from '../../views/Modal/modalActions';
+import ModalRegisterStudent from './RegisterStudentModal';
+import { visibleModal } from '../../views/Modal/modalActions';
 
 export default function StudentProfile(props) {
   const modal = useSelector((state) => state.modal);
@@ -46,7 +45,6 @@ export default function StudentProfile(props) {
 
   const handleUpdateStudent = (event) => {
     dispatch(visibleModal(true));
-    dispatch(actualModal('Student'));
   };
 
   return (
@@ -76,9 +74,7 @@ export default function StudentProfile(props) {
                 className={`${classes.comportamentoAlign} ${classes.description} ${classes.divNota}`}
               >
                 <Badge
-                  badgeContent={format.formatNumber(
-                    student.comportamento.pontuacao
-                  )}
+                  badgeContent={student.comportamento.pontuacao}
                   color="primary"
                 >
                   Pontuação&nbsp;&nbsp;
@@ -127,11 +123,8 @@ export default function StudentProfile(props) {
         </CardBody>
       </Card>
 
-      {modal.modalName === 'Student' && (
-        <ReactModal open={modal.visible}>
-          {console.log('EDIT')}
-          <RegisterStudent onClose={handleCloseModal} />
-        </ReactModal>
+      {modal.visible && (
+        <ModalRegisterStudent onClose={handleCloseModal} open={modal.visible} />
       )}
     </div>
   );
