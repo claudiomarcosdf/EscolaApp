@@ -1,4 +1,4 @@
-import * as api from '../../services/apiService';
+import * as api from '../../services/apiStudentService';
 
 import {
   COUNT_STUDENT_REQUEST,

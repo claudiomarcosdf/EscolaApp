@@ -5,6 +5,7 @@ import studentReducer from './views/Student/studentReducer';
 import modalReducer from './views/Modal/modalReducer';
 import occurrenceReducer from './views/Occurrence/occurrenceReducer';
 import dashboardReducer from './views/Dashboard/dashboardReducer';
+import tablesReducer from './views/TableList/tableListReducer';
 
 const rootReducers = combineReducers({
   student: studentReducer,
@@ -12,6 +13,7 @@ const rootReducers = combineReducers({
   occurrence: occurrenceReducer,
   toastr: toastrReducer,
   dashboard: dashboardReducer,
+  table: tablesReducer,
 });
 
 export default rootReducers;

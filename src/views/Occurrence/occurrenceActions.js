@@ -1,4 +1,4 @@
-import * as api from '../../services/apiService';
+import * as api from '../../services/apiStudentService';
 import { toastr } from 'react-redux-toastr';
 import { currentStudent } from '../Student/studentActions';
 import { visibleModal } from '../Modal/modalActions';

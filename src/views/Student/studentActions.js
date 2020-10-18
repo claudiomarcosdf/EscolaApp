@@ -1,7 +1,7 @@
-import * as api from '../../services/apiService';
+import * as api from '../../services/apiStudentService';
 import { toastr } from 'react-redux-toastr';
 import { visibleModal } from '../Modal/modalActions';
-import { fetchCountStudents } from '../Dashboard/dashboardActions';
+import { fetchCountStudents } from '../Dashboard/dashboardActions'; //verificar a não chamada por aqui
 
 import {
   FETCH_STUDENTS_REQUEST,
