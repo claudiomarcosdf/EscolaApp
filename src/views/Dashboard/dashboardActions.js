@@ -100,7 +100,7 @@ export const fetchResumeOccurrences = () => {
       .getResumeOccurrences()
       .then((response) => {
         const resume = response.data;
-
+        console.log(resume);
         dispatch(resumeOccurrencesSuccess(resume));
       })
       .catch((error) => {

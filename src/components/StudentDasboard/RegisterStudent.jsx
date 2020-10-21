@@ -105,7 +105,9 @@ export default function RegisterStudentModal({ onClose }) {
       </div>
 
       <div style={styles.flexRow}>
-        <span style={styles.errorMessage}>{errorMessage}</span>
+        <Typography variant="caption" style={styles.errorMessage}>
+          {errorMessage}
+        </Typography>
         <Button color="primary" onClick={handleModalClose}>
           Sair
         </Button>

@@ -8,7 +8,7 @@ import {
 } from './occurrenceTypes';
 
 const initialState = {
-  occurrences: [],
+  occurrences: [{}],
   errors: [],
 };
 

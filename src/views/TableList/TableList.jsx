@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import GridItem from 'components/Grid/GridItem.js';
 import GridContainer from 'components/Grid/GridContainer.js';
@@ -12,8 +12,10 @@ import {
 import TableMeasure from './TableMeasure';
 import TableBehavior from './TableBehavior';
 import TableTransgression from './TableTransgression';
+import Progress from '../../components/Progress/Progress';
 
 export default function TableList() {
+  const tables = useSelector((state) => state.table);
   const dispatch = useDispatch();
 
   const getMeasures = useCallback(() => {
@@ -37,6 +39,7 @@ export default function TableList() {
   const classes = useStyles();
   return (
     <div>
+      {tables.loading && <Progress>Carregando...</Progress>}
       <GridContainer>
         <GridItem xs={12} sm={6} md={6}>
           <TableMeasure />

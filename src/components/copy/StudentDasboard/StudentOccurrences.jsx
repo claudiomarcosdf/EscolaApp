@@ -34,7 +34,6 @@ export default function StudentOccurrences(props) {
 
   const hadleDelete = (event, id) => {
     const value = id;
-    console.log(value);
   };
 
   const handleNewOccurrence = () => {
@@ -74,7 +73,11 @@ export default function StudentOccurrences(props) {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {_.isEmpty(ocorrencias) && <span>Não há ocorrências</span>}
+                {_.isEmpty(ocorrencias) && (
+                  <Typography variant="caption" style={{ marginLeft: '15px' }}>
+                    Não há ocorrências
+                  </Typography>
+                )}
                 {ocorrencias.map((ocorrencia) => {
                   const condutaStyle =
                     ocorrencia.conduta === 'NEGATIVA'

@@ -14,17 +14,15 @@ export default function Footer(props) {
     <footer className={classes.footer}>
       <div className={classes.container}>
         <p className={classes.right}>
-          <span>
-            &copy; {1900 + new Date().getYear()}{' '}
-            <a
-              href="https://www.projetoescola.com"
-              target="_blank"
-              className={classes.a}
-            >
-              Corporate TM
-            </a>
-            , projeto escola
-          </span>
+          &copy; {1900 + new Date().getYear()}{' '}
+          <a
+            href="https://www.projetoescola.com"
+            target="_blank"
+            className={classes.a}
+          >
+            Corporate TM
+          </a>
+          , projeto escola
         </p>
       </div>
     </footer>

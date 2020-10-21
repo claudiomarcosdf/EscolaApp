@@ -83,7 +83,6 @@ export default function BasicInformations() {
               id="nome"
               label="Nome"
               fullWidth
-              contextMenuHidden={true}
               value={student.nome}
               onChange={handleChangeValue}
             />{' '}

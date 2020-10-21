@@ -129,7 +129,6 @@ export default function StudentProfile(props) {
 
       {modal.modalName === 'Student' && (
         <ReactModal open={modal.visible}>
-          {console.log('EDIT')}
           <RegisterStudent onClose={handleCloseModal} />
         </ReactModal>
       )}

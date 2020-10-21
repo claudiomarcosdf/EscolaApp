@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -12,6 +12,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import moment from 'moment';
 import * as format from '../../../helpers/formatHelpers';
 import { addOccurrence } from '../../../views/Occurrence/occurrenceActions';
+import { fetchMeasures } from '../../../views/TableList/tableListActions';
 
 export default function RegisterOccurrence({ onClose }) {
   const nowDate = moment().format('YYYY-MM-DD');
@@ -24,11 +25,20 @@ export default function RegisterOccurrence({ onClose }) {
     valor: 0,
   };
 
-  const [occurrence, setOccurrence] = useState(newOccurrence);
-  const [currentMedidas, setCurrentMedidas] = useState(medidas);
-
   const student = useSelector((state) => state.student.student);
+  const tableMeasures = useSelector((state) => state.table.tableMeasures);
   const dispatch = useDispatch();
+
+  const [occurrence, setOccurrence] = useState(newOccurrence);
+  const [currentMeasures, setCurrentMeasures] = useState([]);
+
+  const getMeasures = useCallback(() => {
+    dispatch(fetchMeasures());
+  }, []);
+
+  useEffect(() => {
+    getMeasures();
+  }, []);
 
   const handleModalClose = () => {
     onClose(true);
@@ -38,10 +48,12 @@ export default function RegisterOccurrence({ onClose }) {
     const { name, value } = event.target;
 
     if (name === 'medida') {
-      const selectedMedida = medidas.find((med) => med.medida === value);
+      const selectedMedida = tableMeasures.find(
+        (med) => med.descricao === value
+      );
       setOccurrence({
         ...occurrence,
-        medida: selectedMedida.medida,
+        medida: selectedMedida.descricao,
         valor: selectedMedida.valor,
       });
     } else {
@@ -56,14 +68,20 @@ export default function RegisterOccurrence({ onClose }) {
     let filteredMedidas = [];
 
     if (value === 'NEGATIVA') {
-      filteredMedidas = medidas.filter((med) => med.tipo === '-');
+      filteredMedidas = tableMeasures.filter(
+        (med) => med.tipo_conduta === 'NEGATIVA'
+      );
     } else if (value === 'POSITIVA') {
-      filteredMedidas = medidas.filter((med) => med.tipo === '+');
+      filteredMedidas = tableMeasures.filter(
+        (med) => med.tipo_conduta === 'POSITIVA'
+      );
     } else {
-      filteredMedidas = medidas.filter((med) => med.tipo === '0');
+      filteredMedidas = tableMeasures.filter(
+        (med) => med.tipo_conduta === 'NEUTRA'
+      );
     }
 
-    setCurrentMedidas(filteredMedidas);
+    setCurrentMeasures(filteredMedidas);
   };
 
   const handleModalSave = () => {
@@ -73,7 +91,6 @@ export default function RegisterOccurrence({ onClose }) {
   const classes = useStyles();
   return (
     <div>
-      {console.log(occurrence)}
       <div style={styles.flexRow}>
         <Typography variant="h5">Lançamento de ocorrência</Typography>
       </div>
@@ -85,11 +102,12 @@ export default function RegisterOccurrence({ onClose }) {
         <div className={classes.formatLayout}>
           <div className={classes.twoElements}>
             <TextField
+              required
               name="data"
               id="data"
               label="Data do fato"
               type="date"
-              defaultValue={nowDate}
+              // defaultValue={nowDate}
               value={format.formatDateToField(occurrence.data)}
               onChange={handleChangeValue}
               InputLabelProps={{
@@ -98,13 +116,13 @@ export default function RegisterOccurrence({ onClose }) {
             />
             <br />
             <TextField
+              required
               className={classes.spaceTop}
               name="fato_observado"
               required
               id="fato_observado"
               label="Fato observado"
               fullWidth
-              contextMenuHidden={true}
               value={occurrence.fato_observado}
               onChange={handleChangeValue}
             />{' '}
@@ -113,6 +131,7 @@ export default function RegisterOccurrence({ onClose }) {
             <FormControl className={classes.formControlConduta}>
               <InputLabel id="select-label">Conduta</InputLabel>
               <Select
+                required
                 labelId="select-label"
                 id="conduta"
                 name="conduta"
@@ -138,22 +157,25 @@ export default function RegisterOccurrence({ onClose }) {
             <FormControl className={classes.formControlMedida}>
               <InputLabel id="select-label">Medida</InputLabel>
               <Select
+                required
                 labelId="select-label"
                 id="medida"
                 name="medida"
                 value={occurrence.medida}
                 onChange={handleChangeValue}
+                disabled={currentMeasures.length === 0}
               >
-                {currentMedidas.map((opc, index) => {
+                {currentMeasures.map((opc, index) => {
                   return (
-                    <MenuItem value={opc.medida} key={index}>
-                      {opc.medida}
+                    <MenuItem value={opc.descricao} key={index}>
+                      {opc.descricao}
                     </MenuItem>
                   );
                 })}
               </Select>
             </FormControl>
             <TextField
+              required
               name="valor"
               id="valor"
               label="Valor"
@@ -164,16 +186,27 @@ export default function RegisterOccurrence({ onClose }) {
             />
           </div>
         </div>
-      </form>
 
-      <div style={styles.flexFooter} className={classes.formatLayout}>
-        <Button variant="contained" color="primary" onClick={handleModalSave}>
-          Salvar
-        </Button>
-        <Button color="primary" onClick={handleModalClose}>
-          Sair
-        </Button>
-      </div>
+        <div style={styles.flexFooter} className={classes.formatLayout}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleModalSave}
+            disabled={
+              !(
+                occurrence.fato_observado.length > 0 &&
+                occurrence.conduta.length > 0 &&
+                occurrence.medida.length > 0
+              )
+            }
+          >
+            Salvar
+          </Button>
+          <Button color="primary" onClick={handleModalClose}>
+            Sair
+          </Button>
+        </div>
+      </form>
     </div>
   );
 }

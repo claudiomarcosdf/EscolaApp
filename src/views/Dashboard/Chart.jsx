@@ -47,7 +47,6 @@ export default function Chart() {
       ],
     ],
   };
-  console.log(resumeBehaviors);
 
   const classes = useStyles();
   return (

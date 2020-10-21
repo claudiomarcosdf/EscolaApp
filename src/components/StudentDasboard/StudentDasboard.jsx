@@ -10,6 +10,7 @@ import GridItem from '../Grid/GridItem';
 import GridContainer from '../Grid/GridContainer';
 
 import _ from 'lodash';
+import moment from 'moment';
 
 import StudentProfile from './StudentProfile';
 import StudentClasse from './StudentClasse';
@@ -61,7 +62,12 @@ export default function StudentDasboard() {
                       dados_pessoais={student.dados_pessoais}
                     />
                   ) : (
-                    <span>Sem informações pessoais</span>
+                    <Typography
+                      variant="inherit"
+                      style={{ fontSize: '0.9rem' }}
+                    >
+                      Sem informações pessoais
+                    </Typography>
                   )}
                 </AccordionDetails>
               </Accordion>
@@ -78,13 +84,14 @@ export default function StudentDasboard() {
                 </AccordionSummary>
                 <AccordionDetails>
                   {student.ocorrencias ? (
-                    <StudentOccurrences
-                      ocorrencias={student.ocorrencias.sort(
-                        (a, b) => b.data - a.data
-                      )}
-                    />
+                    <StudentOccurrences ocorrencias={student.ocorrencias} />
                   ) : (
-                    <span>Não há ocorrências</span>
+                    <Typography
+                      variant="inherit"
+                      style={{ fontSize: '0.9rem' }}
+                    >
+                      Não há ocorrências
+                    </Typography>
                   )}
                 </AccordionDetails>
               </Accordion>
@@ -108,6 +115,7 @@ const useStyles = makeStyles((theme) => ({
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
+    color: '#487eb0',
     flexBasis: '33.33%',
     flexShrink: 0,
   },
