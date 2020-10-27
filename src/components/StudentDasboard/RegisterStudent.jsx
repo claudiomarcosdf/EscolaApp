@@ -20,7 +20,6 @@ import {
 } from '../../views/Student/studentActions';
 
 export default function RegisterStudentModal({ onClose }) {
-  const [errorMessage, setErrorMessage] = useState('');
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
 
@@ -106,7 +105,7 @@ export default function RegisterStudentModal({ onClose }) {
 
       <div style={styles.flexRow}>
         <Typography variant="caption" style={styles.errorMessage}>
-          {errorMessage}
+          {' '}
         </Typography>
         <Button color="primary" onClick={handleModalClose}>
           Sair

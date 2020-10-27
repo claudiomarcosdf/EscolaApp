@@ -1,18 +1,5 @@
-// // // javascript library for creating charts
-// #############################
-var Chartist = require('chartist');
-
-// ##############################
-// // // variables used to create animation on charts
-// #############################
 var delays = 80,
   durations = 500;
-var delays2 = 80,
-  durations2 = 500;
-
-// ##############################
-// // // Email Subscriptions
-// #############################
 
 const emailsSubscriptionChart = {
   data: {
@@ -57,8 +44,8 @@ const emailsSubscriptionChart = {
       if (data.type === 'Bar') {
         data.element.animate({
           opacity: {
-            begin: (data.index + 1) * delays2,
-            dur: durations2,
+            begin: (data.index + 1) * delays,
+            dur: durations,
             from: 0,
             to: 1,
             easing: 'ease',

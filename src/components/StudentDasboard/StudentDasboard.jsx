@@ -10,7 +10,6 @@ import GridItem from '../Grid/GridItem';
 import GridContainer from '../Grid/GridContainer';
 
 import _ from 'lodash';
-import moment from 'moment';
 
 import StudentProfile from './StudentProfile';
 import StudentClasse from './StudentClasse';

@@ -34,7 +34,7 @@ export default function RegisterOccurrence({ onClose }) {
 
   const getMeasures = useCallback(() => {
     dispatch(fetchMeasures());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     getMeasures();
@@ -119,7 +119,6 @@ export default function RegisterOccurrence({ onClose }) {
               required
               className={classes.spaceTop}
               name="fato_observado"
-              required
               id="fato_observado"
               label="Fato observado"
               fullWidth
@@ -212,19 +211,6 @@ export default function RegisterOccurrence({ onClose }) {
 }
 
 const condutas = ['NEGATIVA', 'POSITIVA', 'NEUTRA'];
-
-const medidas = [
-  { medida: 'Advertência verbal', valor: 0.0, tipo: '-' },
-  { medida: 'Advertência escrita', valor: 0.1, tipo: '-' },
-  { medida: 'Repreensão', valor: 0.2, tipo: '-' },
-  { medida: 'Estudo orientado', valor: 0.4, tipo: '-' },
-  { medida: 'Suspensão', valor: 0.8, tipo: '-' },
-  { medida: 'Elogio coletivo', valor: 0.1, tipo: '+' },
-  { medida: 'Elogio individual', valor: 0.3, tipo: '+' },
-  { medida: 'Aprovação por média sem recuperação', valor: 0.5, tipo: '+' },
-  { medida: 'Aprovação por média com recuperação', valor: 0.2, tipo: '+' },
-  { medida: 'Reprovação', valor: 0.0, tipo: '0' },
-];
 
 const styles = {
   flexRow: {

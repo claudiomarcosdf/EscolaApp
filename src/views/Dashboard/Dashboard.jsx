@@ -35,7 +35,7 @@ export default function Dashboard() {
   React.useEffect(() => {
     dispatch(fetchCountStudents());
     dispatch(fetchResumeOccurrences());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>

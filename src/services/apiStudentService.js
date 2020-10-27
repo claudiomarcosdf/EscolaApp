@@ -47,7 +47,7 @@ async function updateStudent(id, student) {
 async function getCountStudents() {
   const response = await axios.get(`${BASE_URL}/alunos/count`);
 
-  if (response.status != 200) {
+  if (response.status !== 200) {
     throw Error(response.Error);
   }
 
@@ -58,7 +58,7 @@ async function getCountStudents() {
 async function getResumeOccurrences() {
   const response = await axios.get(`${BASE_URL}/alunos/resumeocorrencias`);
 
-  if (response.status != 200) {
+  if (response.status !== 200) {
     throw Error(response.Error);
   }
 
@@ -72,7 +72,7 @@ async function getCountOccurrence(startDate, endDate) {
   }&finalDate=${endDate}`;
   const response = await axios.get(`${BASE_URL}/alunos/${uri}`);
 
-  if (response.status != 200) {
+  if (response.status !== 200) {
     throw Error(response.Error);
   }
 
@@ -83,7 +83,7 @@ async function getCountOccurrence(startDate, endDate) {
 async function getBehaviorStudents() {
   const response = await axios.get(`${BASE_URL}/alunos/comportamento`);
 
-  if (response.status != 200) {
+  if (response.status !== 200) {
     throw Error(response.Error);
   }
 
@@ -94,7 +94,7 @@ async function addOccurrence(idStudent, occurrence) {
   const uri = `ocorrencia?id=${idStudent}`;
   const response = await axios.post(`${BASE_URL}/alunos/${uri}`, occurrence);
 
-  if (response.status != 200) {
+  if (response.status !== 200) {
     throw Error(response.Error);
   }
   return response;
@@ -104,7 +104,7 @@ async function deleteOccurrence(idOccurrence) {
   const uri = `ocorrencia?id=${idOccurrence}`; //ID da ocorrência
   const response = await axios.delete(`${BASE_URL}/alunos/${uri}`);
 
-  if (response.status != 200) {
+  if (response.status !== 200) {
     throw Error(response.Error);
   }
   return response;

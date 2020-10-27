@@ -16,7 +16,6 @@ import Switch from '@material-ui/core/Switch';
 
 import { currentStudent } from '../../../views/Student/studentActions';
 import PhoneMask from '../../../helpers/PhoneMask';
-import moment from 'moment';
 import * as format from '../../../helpers/formatHelpers';
 
 export default function BasicInformations() {

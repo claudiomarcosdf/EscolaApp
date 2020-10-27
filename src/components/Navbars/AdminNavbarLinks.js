@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // @material-ui/core components
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import User from '@material-ui/icons/AccountCircle';
 import Menu from '@material-ui/core/Menu';
@@ -33,7 +33,7 @@ export default function AdminNavbarLinks() {
       <IconButton className={classes.margin} onClick={handleOpenClick}>
         <User />
       </IconButton>
-      <Menu
+      <StyledMenu
         id="simple-menu"
         elevation={0}
         getContentAnchorEl={null}
@@ -59,7 +59,7 @@ export default function AdminNavbarLinks() {
           </div>
         </MenuItem>
         <MenuItem onClick={handleClick}>Sair</MenuItem>
-      </Menu>
+      </StyledMenu>
     </div>
   );
 }
@@ -77,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '0.8rem',
     alignItems: 'center',
     paddingRight: '0px',
+    color: '#34495e',
   },
   menu: {
     display: 'flex',
@@ -87,5 +88,26 @@ const useStyles = makeStyles((theme) => ({
   itemsMenu: {
     fontWeight: '300',
     fontSize: '0.8em',
+    color: '#4b6584',
   },
 }));
+
+const StyledMenu = withStyles({
+  paper: {
+    border: '1px solid #d3d4d5',
+  },
+})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'center',
+    }}
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'center',
+    }}
+    {...props}
+  />
+));

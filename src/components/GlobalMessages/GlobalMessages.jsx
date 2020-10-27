@@ -3,7 +3,7 @@ import ReduxToastr from 'react-redux-toastr';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 
 export default function GlobalMessages(props) {
-  const { errors } = props;
+  // const { errors } = props;
 
   return (
     <div>

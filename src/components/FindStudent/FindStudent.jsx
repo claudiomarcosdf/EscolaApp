@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -17,7 +17,6 @@ import Avatar from '@material-ui/core/Avatar';
 import avatarAluno from 'assets/img/faces/3.jpg';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-import _ from 'lodash';
 
 import {
   fetchStudents,

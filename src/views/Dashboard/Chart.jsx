@@ -23,7 +23,7 @@ export default function Chart() {
 
   React.useEffect(() => {
     dispatch(fetchResumeBehaviors());
-  }, []);
+  }, [dispatch]);
 
   const {
     totalExcepcional,

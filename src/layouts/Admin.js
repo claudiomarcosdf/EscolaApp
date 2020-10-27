@@ -17,7 +17,8 @@ import styles from 'assets/jss/material-dashboard-react/layouts/adminStyle.js';
 
 //import bgImage from 'assets/img/sidebar-2.jpg';
 import bgImage from 'assets/img/school2.png';
-import logo from 'assets/img/reactlogo.png';
+// import logo from 'assets/img/reactlogo.png';
+import logo from 'assets/img/neo-icon.png';
 
 let ps;
 
@@ -84,7 +85,7 @@ export default function Admin({ ...rest }) {
     <div className={classes.wrapper}>
       <Sidebar
         routes={routes}
-        logoText={'Escola APP'}
+        logoText={'Escolar'}
         logo={logo}
         image={image}
         handleDrawerToggle={handleDrawerToggle}

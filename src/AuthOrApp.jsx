@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Switch, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
-import _ from 'lodash';
 import Admin from 'layouts/Admin.js';
 import SignIn from './views/Auth/SignIn';
 import { validateToken } from './views/Auth/authActions';
-import { configs } from 'eslint-plugin-prettier';
 
 export default function AuthOrApp({ children }) {
   const auth = useSelector((state) => state.auth);
@@ -16,7 +15,7 @@ export default function AuthOrApp({ children }) {
     if (auth.user) {
       dispatch(validateToken(auth.user.token));
     }
-  }, []);
+  }, [auth.user, dispatch]);
 
   const config = () => {
     axios.defaults.headers.common['authorization'] = auth.user.token;
@@ -25,11 +24,17 @@ export default function AuthOrApp({ children }) {
   return auth.user && auth.validToken ? (
     <>
       {config()}
+      <Switch>
+        <Redirect to="/admin/dashboard" />
+      </Switch>
       <Admin />
     </>
   ) : !auth.user && !auth.validToken ? (
     <>
-      <SignIn />
+      <Switch>
+        <Redirect to="/" />
+      </Switch>
+      {<SignIn />}
     </>
   ) : (
     <></>
