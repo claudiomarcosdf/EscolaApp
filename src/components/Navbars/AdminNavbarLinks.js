@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import User from '@material-ui/icons/AccountCircle';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Divider from '@material-ui/core/Divider';
 
 import { logout } from '../../views/Auth/authActions';
 
@@ -58,6 +59,7 @@ export default function AdminNavbarLinks() {
             <div className={classes.itemsMenu}>{user.email}</div>
           </div>
         </MenuItem>
+        <Divider light />
         <MenuItem onClick={handleClick}>Sair</MenuItem>
       </StyledMenu>
     </div>
@@ -84,6 +86,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'left',
     justifyContent: 'flex-start',
+    padding: '5px 0px 20px',
   },
   itemsMenu: {
     fontWeight: '300',
