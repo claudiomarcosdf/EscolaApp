@@ -9,66 +9,66 @@ import {
   RESUME_OCCURRENCES_FAILURE,
   RESUME_BEHAVIOR_REQUEST,
   RESUME_BEHAVIOR_SUCCESS,
-  RESUME_BEHAVIOR_FAILURE,
+  RESUME_BEHAVIOR_FAILURE
 } from './dashboardTypes';
 
 export const countStudentRequest = () => {
   return {
-    type: COUNT_STUDENT_REQUEST,
+    type: COUNT_STUDENT_REQUEST
   };
 };
 
 export const countStudentSuccess = (count) => {
   return {
     type: COUNT_STUDENT_SUCCESS,
-    payload: count,
+    payload: count
   };
 };
 
 export const countStudentFailure = (errors) => {
   return {
     type: COUNT_STUDENT_FAILURE,
-    payload: errors,
+    payload: errors
   };
 };
 
 export const resumeOccurrencesRequest = () => {
   return {
-    type: RESUME_OCCURRENCES_REQUEST,
+    type: RESUME_OCCURRENCES_REQUEST
   };
 };
 
 export const resumeOccurrencesSuccess = (resume) => {
   return {
     type: RESUME_OCCURRENCES_SUCCESS,
-    payload: resume,
+    payload: resume
   };
 };
 
 export const resumeOccurrencesFailure = (errors) => {
   return {
     type: RESUME_OCCURRENCES_FAILURE,
-    payload: errors,
+    payload: errors
   };
 };
 
 export const resumeBehaviorRequest = () => {
   return {
-    type: RESUME_BEHAVIOR_REQUEST,
+    type: RESUME_BEHAVIOR_REQUEST
   };
 };
 
 export const resumeBehaviorSuccess = (resume) => {
   return {
     type: RESUME_BEHAVIOR_SUCCESS,
-    payload: resume,
+    payload: resume
   };
 };
 
 export const resumeBehaviorFailure = (errors) => {
   return {
     type: RESUME_BEHAVIOR_FAILURE,
-    payload: errors,
+    payload: errors
   };
 };
 
@@ -127,7 +127,7 @@ export const fetchResumeBehaviors = () => {
           totalBom: 0,
           totalRegular: 0,
           totalInsuficiente: 0,
-          totalMau: 0,
+          totalMau: 0
         };
 
         resume.forEach(({ comportamento }) => {

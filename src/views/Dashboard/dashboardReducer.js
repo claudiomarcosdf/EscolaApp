@@ -7,7 +7,7 @@ import {
   RESUME_OCCURRENCES_FAILURE,
   RESUME_BEHAVIOR_REQUEST,
   RESUME_BEHAVIOR_SUCCESS,
-  RESUME_BEHAVIOR_FAILURE,
+  RESUME_BEHAVIOR_FAILURE
 } from './dashboardTypes';
 
 const initialState = {
@@ -15,7 +15,7 @@ const initialState = {
   countStudents: 0,
   resumeOccurrences: {},
   resumeBehaviors: {},
-  errors: [],
+  errors: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -23,7 +23,7 @@ const reducer = (state = initialState, action) => {
     case COUNT_STUDENT_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: true
       };
 
     case COUNT_STUDENT_SUCCESS:
@@ -31,20 +31,20 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         countStudents: action.payload,
-        errors: [],
+        errors: []
       };
 
     case COUNT_STUDENT_FAILURE:
       return {
         ...state,
         loading: false,
-        errors: action.payload,
+        errors: action.payload
       };
 
     case RESUME_OCCURRENCES_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: true
       };
 
     case RESUME_OCCURRENCES_SUCCESS:
@@ -52,20 +52,20 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         resumeOccurrences: action.payload,
-        errors: [],
+        errors: []
       };
 
     case RESUME_OCCURRENCES_FAILURE:
       return {
         ...state,
         loading: false,
-        errors: action.payload,
+        errors: action.payload
       };
 
     case RESUME_BEHAVIOR_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: true
       };
 
     case RESUME_BEHAVIOR_SUCCESS:
@@ -73,14 +73,14 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         resumeBehaviors: action.payload,
-        errors: [],
+        errors: []
       };
 
     case RESUME_BEHAVIOR_FAILURE:
       return {
         ...state,
         loading: false,
-        errors: action.payload,
+        errors: action.payload
       };
 
     default:

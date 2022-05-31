@@ -22,11 +22,11 @@ export default function Classe() {
 
     const newClasse = {
       ...classe,
-      [name]: value,
+      [name]: value
     };
     const alteredStudent = {
       ...student,
-      classe: newClasse,
+      classe: newClasse
     };
 
     dispatch(currentStudent(alteredStudent));
@@ -50,7 +50,7 @@ export default function Classe() {
               onChange={handleChangeClassValue}
               defaultValue={nowDate}
               InputLabelProps={{
-                shrink: true,
+                shrink: true
               }}
             />
             <FormControl className={classes.formControlAno}>
@@ -127,7 +127,7 @@ export default function Classe() {
 const series = [
   'Ensino fundamental I',
   'Ensino fundamental II',
-  'Ensino médio',
+  'Ensino médio'
 ];
 
 const anos = ['1º', '2º', '3º', '4º', '5º', '6º', '7º', '8º', '9º'];
@@ -137,30 +137,30 @@ const turnos = ['Matutino', 'Vespertino', 'Integral'];
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
-      margin: theme.spacing(1),
+      margin: theme.spacing(1)
       // width: '25ch',
-    },
+    }
   },
   formatLayout: {
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginTop: '30px',
+    marginTop: '30px'
   },
   formControl: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(1)
   },
   formControlAno: {
     margin: theme.spacing(1),
-    width: '15ch',
+    width: '15ch'
   },
   formControlSerie: {
     margin: theme.spacing(1),
-    width: '50ch',
+    width: '50ch'
   },
   formControlTurno: {
     margin: theme.spacing(1),
-    width: '19ch',
-  },
+    width: '19ch'
+  }
 }));

@@ -11,7 +11,7 @@ export default function StudentPersonalData(props) {
     responsavel1,
     celular_resp1,
     responsavel2,
-    celular_resp2,
+    celular_resp2
   } = dados_pessoais.contatos;
 
   const classes = useStyles();
@@ -104,26 +104,26 @@ const useStyles = makeStyles((theme) => ({
   containerStyle: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-start'
   },
   body: {
     fontSize: theme.typography.pxToRem(13),
-    fontWeight: theme.typography.fontWeightRegular,
+    fontWeight: theme.typography.fontWeightRegular
   },
   dataStrong: {
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   headAdjustLeft: {
-    width: '93px',
+    width: '93px'
   },
   headAdjust: {
-    width: '58px',
+    width: '58px'
   },
   dataAdjust: {
-    width: '150px',
+    width: '150px'
   },
   dataAdjustMiddle: {
-    width: '100px',
+    width: '100px'
   },
   heading: {
     fontSize: theme.typography.pxToRem(14),
@@ -131,10 +131,10 @@ const useStyles = makeStyles((theme) => ({
     fontStyle: 'italic',
     flexBasis: '33.33%',
     flexShrink: 0,
-    color: '#487eb0',
+    color: '#487eb0'
   },
   divSubtitle: {
     marginTop: '20px',
-    marginBottom: '8px',
-  },
+    marginBottom: '8px'
+  }
 }));

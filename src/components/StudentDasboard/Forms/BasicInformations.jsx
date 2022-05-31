@@ -103,7 +103,7 @@ export default function BasicInformations() {
               value={format.formatDateToField(student.data_nascimento)}
               onChange={handleChangeValue}
               InputLabelProps={{
-                shrink: true,
+                shrink: true
               }}
             />
             <TextField
@@ -120,7 +120,7 @@ export default function BasicInformations() {
                   <InputAdornment position="start">
                     <PhoneIcon />
                   </InputAdornment>
-                ),
+                )
               }}
             />
           </div>
@@ -173,32 +173,32 @@ const patentes = [
   'Capitão aluno',
   'Major aluno',
   'Tenente coronel aluno',
-  'Coronel aluno',
+  'Coronel aluno'
 ];
 
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
-      margin: theme.spacing(1),
+      margin: theme.spacing(1)
       // width: '25ch',
-    },
+    }
   },
   formatLayout: {
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginTop: '30px',
+    marginTop: '30px'
   },
   formControl: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(1)
   },
   formControlPatente: {
     margin: theme.spacing(1),
-    width: '41ch',
+    width: '41ch'
   },
   labelControl: {
-    marginBottom: '0px',
+    marginBottom: '0px'
   },
   flexRow: {
     width: '100%',
@@ -206,6 +206,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'flex-end',
     justifyContent: 'space-between',
-    marginBottom: '0px',
-  },
+    marginBottom: '0px'
+  }
 }));

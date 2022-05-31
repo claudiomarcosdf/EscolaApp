@@ -40,16 +40,16 @@ const useStyles = makeStyles((theme) => ({
   containerStyle: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-start'
   },
   body: {
     fontSize: theme.typography.pxToRem(13),
-    fontWeight: theme.typography.fontWeightRegular,
+    fontWeight: theme.typography.fontWeightRegular
   },
   headDataAdjust: {
-    width: '120px',
+    width: '120px'
   },
   dataAdjust: {
-    fontWeight: 'bold',
-  },
+    fontWeight: 'bold'
+  }
 }));

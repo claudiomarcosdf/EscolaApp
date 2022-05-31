@@ -4,12 +4,12 @@ import {
   ADD_OCCURRENCE_FAILURE,
   DELETE_OCCURRENCE_REQUEST,
   DELETE_OCCURRENCE_SUCCESS,
-  DELETE_OCCURRENCE_FAILURE,
+  DELETE_OCCURRENCE_FAILURE
 } from './occurrenceTypes';
 
 const initialState = {
   occurrences: [{}],
-  errors: [],
+  errors: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,36 +17,36 @@ const reducer = (state = initialState, action) => {
     case ADD_OCCURRENCE_REQUEST:
       return {
         ...state,
-        errors: [],
+        errors: []
       };
     case ADD_OCCURRENCE_SUCCESS:
       return {
         ...state,
         occurrences: action.payload,
-        errors: [],
+        errors: []
       };
     case ADD_OCCURRENCE_FAILURE:
       return {
         ...state,
         occurrences: [],
-        errors: action.payload,
+        errors: action.payload
       };
     case DELETE_OCCURRENCE_REQUEST:
       return {
         ...state,
-        errors: [],
+        errors: []
       };
     case DELETE_OCCURRENCE_SUCCESS:
       return {
         ...state,
         occurrences: action.payload,
-        errors: [],
+        errors: []
       };
     case DELETE_OCCURRENCE_FAILURE:
       return {
         ...state,
         occurrences: [],
-        errors: action.payload,
+        errors: action.payload
       };
 
     default:

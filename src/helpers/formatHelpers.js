@@ -5,7 +5,7 @@ function formatCurrency(value) {
 function formatNumber(value) {
   return value.toLocaleString('pt-BR', {
     minimumFractionDigits: 1,
-    maximumFractionDigits: 1,
+    maximumFractionDigits: 1
   });
 }
 
@@ -17,7 +17,7 @@ function formatDateBr(date) {
   const dateToFormat = date.substring(0, 10);
   const currentDate = new Date(dateToFormat);
   const dateFormated = new Intl.DateTimeFormat('pt-BR', {
-    timeZone: 'UTC',
+    timeZone: 'UTC'
   }).format(currentDate);
 
   return dateFormated;
@@ -42,5 +42,5 @@ export {
   formatNumber,
   formatDateBr,
   capitalize,
-  formatDateToField,
+  formatDateToField
 };

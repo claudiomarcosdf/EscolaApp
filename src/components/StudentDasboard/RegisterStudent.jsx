@@ -16,7 +16,7 @@ import PersonalData from './Forms/PersonalData';
 import {
   currentStudent,
   addStudent,
-  editStudent,
+  editStudent
 } from '../../views/Student/studentActions';
 
 export default function RegisterStudentModal({ onClose }) {
@@ -66,7 +66,7 @@ export default function RegisterStudentModal({ onClose }) {
       </div>
 
       <div className={classes.root}>
-        <Stepper activeStep={activeStep} alternativeLabel>
+        <Stepper activeStep={activeStep} alternativeLabel style={styles.root}>
           {steps.map((label) => (
             <Step key={label}>
               <StepLabel>{label}</StepLabel>
@@ -141,7 +141,7 @@ const styles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    padding: '10px',
+    padding: '10px'
   },
 
   flexRow: {
@@ -149,41 +149,45 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'right',
     justifyContent: 'space-between',
-    marginBottom: '0px',
+    marginBottom: '0px'
   },
 
   title: {
     fontSize: '1.3rem',
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
 
   errorMessage: {
     color: '#ff5252',
     fontWeight: 'bold',
     width: '500px',
-    marginTop: '8px',
+    marginTop: '8px'
   },
+
+  root: {
+    backgroundColor: '#fdfcfa'
+  }
 };
 
 const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(0),
-    width: '10px',
+    width: '10px'
   },
   root: {
-    width: '100%',
+    width: '100%'
   },
   backButton: {
-    marginRight: theme.spacing(1),
+    marginRight: theme.spacing(1)
   },
   instructions: {
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(1)
   },
   adjustMargins: {
-    marginTop: '40px',
+    marginTop: '40px'
   },
   fixedSizeBody: {
-    height: '300px',
-  },
+    height: '300px'
+  }
 }));

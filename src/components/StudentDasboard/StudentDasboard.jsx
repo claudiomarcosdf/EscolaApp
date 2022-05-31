@@ -26,7 +26,7 @@ export default function StudentDasboard() {
     <>
       {!_.isEmpty(student._id) && (
         <GridContainer>
-          <GridItem xs={12} sm={12} md={6}>
+          <GridItem xs={12} sm={12} md={8}>
             <div className={classes.root}>
               {/* <Accordion CLASSE> */}
               <Accordion>
@@ -97,7 +97,7 @@ export default function StudentDasboard() {
             </div>
           </GridItem>
           {/* CARD PROFILE */}
-          <GridItem xs={12} sm={12} md={6}>
+          <GridItem xs={12} sm={12} md={4}>
             {student.comportamento && <StudentProfile student={student} />}
           </GridItem>
         </GridContainer>
@@ -109,17 +109,17 @@ export default function StudentDasboard() {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    marginTop: '30px',
+    marginTop: '30px'
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
     color: '#487eb0',
     flexBasis: '33.33%',
-    flexShrink: 0,
+    flexShrink: 0
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
-    color: theme.palette.text.secondary,
-  },
+    color: theme.palette.text.secondary
+  }
 }));

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -20,7 +21,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 import {
   fetchStudents,
-  currentStudent,
+  currentStudent
 } from '../../views/Student/studentActions';
 import { visibleModal, actualModal } from '../../views/Modal/modalActions';
 import ReactModal from 'components/Modal/ReactModal';
@@ -146,39 +147,39 @@ const useStyles = makeStyles((theme) => ({
     padding: '2px 0px',
     display: 'flex',
     alignItems: 'center',
-    width: '100%',
+    width: '100%'
   },
   input: {
     marginLeft: theme.spacing(1),
-    flex: 1,
+    flex: 1
   },
   iconButton: {
     marginLeft: '10px',
-    marginRight: '15px',
+    marginRight: '15px'
   },
   divider: {
     height: 28,
-    margin: 4,
+    margin: 4
   },
   span: {
     marginLeft: '8px',
     marginRight: '5px',
     fontSize: '0.9rem',
-    color: '#0984e3',
+    color: '#0984e3'
   },
   palette: {
-    primary: '#03a9f4',
+    primary: '#03a9f4'
   },
   list: {
     padding: '0px 4px',
     width: '100%',
     maxWidth: 750,
     backgroundColor: theme.palette.background.paper,
-    marginTop: '10px',
+    marginTop: '10px'
   },
   addButton: {
     fontSize: 35,
     marginRight: '10px',
-    marginLeft: '15px',
-  },
+    marginLeft: '15px'
+  }
 }));

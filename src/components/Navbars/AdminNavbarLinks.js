@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // @material-ui/core components
@@ -40,11 +41,11 @@ export default function AdminNavbarLinks() {
         getContentAnchorEl={null}
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'center',
+          horizontal: 'center'
         }}
         transformOrigin={{
           vertical: 'top',
-          horizontal: 'center',
+          horizontal: 'center'
         }}
         anchorEl={anchorEl}
         keepMounted
@@ -70,46 +71,46 @@ const useStyles = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(1),
     marginRight: '0px',
-    marginLeft: '0px',
+    marginLeft: '0px'
   },
   extendedIcon: {
-    marginRight: theme.spacing(0),
+    marginRight: theme.spacing(0)
   },
   userName: {
     fontSize: '0.8rem',
     alignItems: 'center',
     paddingRight: '0px',
-    color: '#34495e',
+    color: '#34495e'
   },
   menu: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'left',
     justifyContent: 'flex-start',
-    padding: '5px 0px 20px',
+    padding: '5px 0px 20px'
   },
   itemsMenu: {
     fontWeight: '300',
     fontSize: '0.8em',
-    color: '#4b6584',
-  },
+    color: '#4b6584'
+  }
 }));
 
 const StyledMenu = withStyles({
   paper: {
-    border: '1px solid #d3d4d5',
-  },
+    border: '1px solid #d3d4d5'
+  }
 })((props) => (
   <Menu
     elevation={0}
     getContentAnchorEl={null}
     anchorOrigin={{
       vertical: 'bottom',
-      horizontal: 'center',
+      horizontal: 'center'
     }}
     transformOrigin={{
       vertical: 'top',
-      horizontal: 'center',
+      horizontal: 'center'
     }}
     {...props}
   />

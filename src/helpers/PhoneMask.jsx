@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MaskedInput from 'react-text-mask';
 
 PhoneMask.propTypes = {
-  inputRef: PropTypes.func.isRequired,
+  inputRef: PropTypes.func.isRequired
 };
 
 export default function PhoneMask(props) {

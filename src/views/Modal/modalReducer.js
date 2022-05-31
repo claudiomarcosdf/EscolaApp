@@ -3,7 +3,7 @@ const ACTUAL_MODAL = 'ACTUAL_MODAL';
 
 const initialState = {
   visible: false,
-  modalName: '',
+  modalName: ''
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,13 +11,13 @@ const reducer = (state = initialState, action) => {
     case VISIBLE_MODAL:
       return {
         ...state,
-        visible: action.payload,
+        visible: action.payload
       };
 
     case ACTUAL_MODAL:
       return {
         ...state,
-        modalName: action.payload,
+        modalName: action.payload
       };
 
     default:

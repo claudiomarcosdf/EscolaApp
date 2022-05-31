@@ -7,6 +7,7 @@ import Admin from 'layouts/Admin.js';
 import SignIn from './views/Auth/SignIn';
 import { validateToken } from './views/Auth/authActions';
 
+// eslint-disable-next-line no-unused-vars
 export default function AuthOrApp({ children }) {
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();

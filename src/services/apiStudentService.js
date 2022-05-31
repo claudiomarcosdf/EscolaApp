@@ -110,6 +110,28 @@ async function deleteOccurrence(idOccurrence) {
   return response;
 }
 
+async function saveAvatar(idAluno, namePath, dataForm) {
+  // BASE_URL/alunos/avatar?id=_id
+
+  const response = await axios.post(
+    `${BASE_URL}/alunos/${namePath}?id=${idAluno}`,
+    dataForm,
+    {
+      headers: {
+        accept: 'application/json',
+        'Accept-Language': 'en-US,en;q=0.8',
+        'Content-Type': `multipart/form-data; boundary=${dataForm._boundary}`
+      }
+    }
+  );
+
+  if (response.status !== 200) {
+    throw Error(response.Error);
+  }
+
+  return response;
+}
+
 export {
   getStudents,
   createStudent,
@@ -120,4 +142,5 @@ export {
   getBehaviorStudents,
   addOccurrence,
   deleteOccurrence,
+  saveAvatar
 };

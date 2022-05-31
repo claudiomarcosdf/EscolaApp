@@ -26,7 +26,7 @@ export default function PersonalData() {
 
     const newPersonalData = {
       ...personalData,
-      [name]: value,
+      [name]: value
     };
     // const alteredStudent = {
     //   ...student,
@@ -46,11 +46,11 @@ export default function PersonalData() {
 
     const newResidence = {
       ...residence,
-      [name]: value,
+      [name]: value
     };
     const alteredPersonalData = {
       ...personalData,
-      residencia: newResidence,
+      residencia: newResidence
     };
 
     updateStudent('dados_pessoais', alteredPersonalData);
@@ -64,11 +64,11 @@ export default function PersonalData() {
 
     const newContact = {
       ...contacts,
-      [name]: value,
+      [name]: value
     };
     const alteredPersonalData = {
       ...personalData,
-      contatos: newContact,
+      contatos: newContact
     };
 
     updateStudent('dados_pessoais', alteredPersonalData);
@@ -77,7 +77,7 @@ export default function PersonalData() {
   const updateStudent = (fieldToChange, valueToChange) => {
     const alteredStudent = {
       ...student,
-      [fieldToChange]: valueToChange,
+      [fieldToChange]: valueToChange
     };
 
     dispatch(currentStudent(alteredStudent));
@@ -91,7 +91,7 @@ export default function PersonalData() {
         onSubmit={(event) => event.preventDefault()}
       >
         <div>
-          <div className={classes.flexRow}>
+          <div className={classes.flexRow} style={{ marginTop: '30px' }}>
             <TextField
               required
               id="cpf"
@@ -101,7 +101,7 @@ export default function PersonalData() {
               value={student.dados_pessoais.cpf}
               onChange={handleChangePersonalDataValue}
               InputProps={{
-                inputComponent: CpfMask,
+                inputComponent: CpfMask
               }}
             />
             <TextField
@@ -125,7 +125,7 @@ export default function PersonalData() {
                   <InputAdornment position="start">
                     <EmailIcon />
                   </InputAdornment>
-                ),
+                )
               }}
             />
           </div>
@@ -174,7 +174,7 @@ export default function PersonalData() {
               value={student.dados_pessoais.residencia.cep}
               onChange={handleChangeResidenceValue}
               InputProps={{
-                inputComponent: CepMask,
+                inputComponent: CepMask
               }}
             />
           </div>
@@ -201,7 +201,7 @@ export default function PersonalData() {
                   <InputAdornment position="start">
                     <PhoneIcon />
                   </InputAdornment>
-                ),
+                )
               }}
             />
           </div>
@@ -229,7 +229,7 @@ export default function PersonalData() {
                   <InputAdornment position="start">
                     <PhoneIcon />
                   </InputAdornment>
-                ),
+                )
               }}
             />
           </div>
@@ -244,9 +244,9 @@ const ufs = ['DF', 'GO', 'TO', 'RJ', 'SP', 'MG', 'PE'];
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
-      margin: theme.spacing(1),
+      margin: theme.spacing(1)
       // width: '25ch',
-    },
+    }
   },
   flexRow: {
     width: '100%',
@@ -254,10 +254,10 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'space-between',
-    marginBottom: '0px',
+    marginBottom: '0px'
   },
   formControlUF: {
     margin: theme.spacing(1),
-    width: '9ch',
-  },
+    width: '9ch'
+  }
 }));

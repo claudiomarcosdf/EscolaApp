@@ -59,30 +59,31 @@ export default function TableMeasure() {
 
 const useStyles = makeStyles({
   table: {
-    width: '90%',
+    width: '90%'
   },
   content: {
     display: 'flex',
     flexDirection: 'row',
     // alignItems: 'top',
-    justifyContent: 'center',
-  },
+    justifyContent: 'center'
+  }
 });
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: '#2c3e50',
-    color: theme.palette.common.white,
+    // backgroundColor: '#2c3e50',
+    backgroundColor: '#82ccdd',
+    color: theme.palette.common.black
   },
   body: {
-    fontSize: 14,
-  },
+    fontSize: 14
+  }
 }))(TableCell);
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
     '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
+      backgroundColor: theme.palette.action.hover
+    }
+  }
 }))(TableRow);

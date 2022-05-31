@@ -1,13 +1,13 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import GridItem from 'components/Grid/GridItem.js';
 import GridContainer from 'components/Grid/GridContainer.js';
 
 import {
   fetchMeasures,
   fetchBehaviors,
-  fetchTransgressions,
+  fetchTransgressions
 } from './tableListActions';
 import TableMeasure from './TableMeasure';
 import TableBehavior from './TableBehavior';
@@ -20,23 +20,23 @@ export default function TableList() {
 
   const getMeasures = useCallback(() => {
     dispatch(fetchMeasures());
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getBehaviors = useCallback(() => {
     dispatch(fetchBehaviors());
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getTransgressions = useCallback(() => {
     dispatch(fetchTransgressions());
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     getMeasures();
     getBehaviors();
     getTransgressions();
-  }, [getMeasures]);
+  }, [getMeasures]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const classes = useStyles();
+  // const classes = useStyles();
   return (
     <div>
       {tables.loading && <Progress>Carregando...</Progress>}
@@ -57,10 +57,10 @@ export default function TableList() {
   );
 }
 
-const useStyles = makeStyles({
-  content: {
-    direction: 'row',
-    justify: 'center',
-    alignItems: 'center',
-  },
-});
+// const useStyles = makeStyles({
+//   content: {
+//     direction: 'row',
+//     justify: 'center',
+//     alignItems: 'center',
+//   },
+// });

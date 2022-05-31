@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 // creates a beautiful scrollbar
@@ -68,7 +69,7 @@ export default function Admin({ ...rest }) {
     if (navigator.platform.indexOf('Win') > -1) {
       ps = new PerfectScrollbar(mainPanel.current, {
         suppressScrollX: true,
-        suppressScrollY: false,
+        suppressScrollY: false
       });
       document.body.style.overflow = 'hidden';
     }

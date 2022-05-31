@@ -31,7 +31,7 @@ export default function Chart() {
     totalBom,
     totalRegular,
     totalInsuficiente,
-    totalMau,
+    totalMau
   } = resumeBehaviors;
 
   const data = {
@@ -43,9 +43,9 @@ export default function Chart() {
         totalBom,
         totalRegular,
         totalInsuficiente,
-        totalMau,
-      ],
-    ],
+        totalMau
+      ]
+    ]
   };
 
   const classes = useStyles();

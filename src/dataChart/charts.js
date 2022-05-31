@@ -4,7 +4,7 @@ var delays = 80,
 const emailsSubscriptionChart = {
   data: {
     labels: ['Excepcional', 'Ótimo', 'Bom', 'Regular', 'Insuficiente', 'Mau'],
-    series: [[2, 5, 20, 7, 4, 1]],
+    series: [[2, 5, 20, 7, 4, 1]]
   },
 
   options: {
@@ -13,18 +13,18 @@ const emailsSubscriptionChart = {
     axisX: {
       showGrid: true,
       offset: 15,
-      scaleMinSpace: 50,
+      scaleMinSpace: 50
     },
     axisY: {
-      offset: 90,
+      offset: 90
     },
     // high: 10,
     chartPadding: {
       top: 0,
       right: 20,
       bottom: 0,
-      left: 0,
-    },
+      left: 0
+    }
   },
   responsiveOptions: [
     [
@@ -34,10 +34,10 @@ const emailsSubscriptionChart = {
         axisX: {
           labelInterpolationFnc: function (value) {
             return value[0];
-          },
-        },
-      },
-    ],
+          }
+        }
+      }
+    ]
   ],
   animation: {
     draw: function (data) {
@@ -48,14 +48,14 @@ const emailsSubscriptionChart = {
             dur: durations,
             from: 0,
             to: 1,
-            easing: 'ease',
-          },
+            easing: 'ease'
+          }
         });
       }
-    },
-  },
+    }
+  }
 };
 
 module.exports = {
-  emailsSubscriptionChart,
+  emailsSubscriptionChart
 };

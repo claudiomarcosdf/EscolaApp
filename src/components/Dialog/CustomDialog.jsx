@@ -11,7 +11,7 @@ export default function CustomDialog({
   onConfirm,
   open,
   title,
-  message,
+  message
 }) {
   const handleClose = () => {
     onClose(null);

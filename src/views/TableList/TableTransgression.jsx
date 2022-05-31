@@ -55,33 +55,34 @@ export default function TableTransgression() {
 
 const useStyles = makeStyles({
   table: {
-    width: '95%',
+    width: '95%'
   },
   content: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: '50px',
+    marginTop: '50px'
   },
   title: {
-    width: '500px',
-  },
+    width: '500px'
+  }
 });
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: '#2c3e50',
-    color: theme.palette.common.white,
+    // backgroundColor: '#2c3e50',
+    backgroundColor: '#82ccdd',
+    color: theme.palette.common.black
   },
   body: {
-    fontSize: 14,
-  },
+    fontSize: 14
+  }
 }))(TableCell);
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
     '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
+      backgroundColor: theme.palette.action.hover
+    }
+  }
 }))(TableRow);

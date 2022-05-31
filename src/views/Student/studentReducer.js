@@ -9,13 +9,16 @@ import {
   EDIT_STUDENT_REQUEST,
   EDIT_STUDENT_SUCCESS,
   EDIT_STUDENT_FAILURE,
+  ADD_STUDENT_AVATAR_REQUEST,
+  ADD_STUDENT_AVATAR_SUCCESS,
+  ADD_STUDENT_AVATAR_FAILURE
 } from './studentTypes';
 
 const initialState = {
   loading: false,
   student: {},
   students: [],
-  errors: [],
+  errors: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -23,7 +26,7 @@ const reducer = (state = initialState, action) => {
     case FETCH_STUDENTS_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: true
       };
 
     case FETCH_STUDENTS_SUCCESS:
@@ -31,7 +34,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         students: action.payload,
-        errors: [],
+        errors: []
       };
 
     case FETCH_STUDENTS_FAILURE:
@@ -39,7 +42,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         students: [],
-        errors: action.payload,
+        errors: action.payload
       };
 
     case CURRENT_STUDENT:
@@ -47,13 +50,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         student: action.payload,
-        students: [],
+        students: []
       };
 
     case ADD_STUDENT_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: true
       };
 
     case ADD_STUDENT_SUCCESS:
@@ -61,20 +64,20 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         student: action.payload,
-        errors: [],
+        errors: []
       };
 
     case ADD_STUDENT_FAILURE:
       return {
         ...state,
         loading: false,
-        errors: action.payload,
+        errors: action.payload
       };
 
     case EDIT_STUDENT_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: true
       };
 
     case EDIT_STUDENT_SUCCESS:
@@ -82,14 +85,35 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         student: action.payload,
-        errors: [],
+        errors: []
       };
 
     case EDIT_STUDENT_FAILURE:
       return {
         ...state,
         loading: false,
-        errors: action.payload,
+        errors: action.payload
+      };
+
+    case ADD_STUDENT_AVATAR_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+
+    case ADD_STUDENT_AVATAR_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        student: action.payload,
+        errors: []
+      };
+
+    case ADD_STUDENT_AVATAR_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        errors: action.payload
       };
 
     default:

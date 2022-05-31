@@ -18,7 +18,7 @@ import Chart from './Chart';
 import styles from 'assets/jss/material-dashboard-react/views/dashboardStyle.js';
 import {
   fetchCountStudents,
-  fetchResumeOccurrences,
+  fetchResumeOccurrences
 } from '../Dashboard/dashboardActions';
 import Progress from '../../components/Progress/Progress';
 

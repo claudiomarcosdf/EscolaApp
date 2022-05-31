@@ -17,22 +17,22 @@ const studentModel = {
       endereco: '',
       cidade: '',
       uf: '',
-      cep: '',
+      cep: ''
     },
     contatos: {
       responsavel1: '',
       celular_resp1: '',
       responsavel2: '',
-      celular_resp2: '',
-    },
+      celular_resp2: ''
+    }
   },
   classe: {
     data_matricula: nowDate,
     ano: '',
     turma: '',
     turno: '',
-    serie: '',
-  },
+    serie: ''
+  }
 };
 
 export default studentModel;

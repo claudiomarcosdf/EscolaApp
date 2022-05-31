@@ -16,13 +16,13 @@ export default function Footer(props) {
         <p className={classes.right}>
           &copy; {1900 + new Date().getYear()}{' '}
           <a
-            href="https://www.projetoescola.com"
+            href="https://pt.wikipedia.org/wiki/Direito_autoral"
             target="_blank"
             className={classes.a}
           >
-            Corporate TM
+            Todos os direitos reservados
           </a>
-          , projeto escola
+          , desenvolvido por Claudio Marcos
         </p>
       </div>
     </footer>

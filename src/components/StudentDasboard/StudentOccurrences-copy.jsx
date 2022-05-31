@@ -73,8 +73,9 @@ export default function StudentOccurrences(props) {
 
   const classes = useStyles();
   return (
-    <>
-      <TableContainer>
+    <div id="main-occurrence">
+      {/* <Grid item xs={5} sm={6} md={10} lg={12} zeroMinWidth> */}
+      <div className={classes.tablex}>
         <Button
           variant="contained"
           color="primary"
@@ -85,81 +86,87 @@ export default function StudentOccurrences(props) {
         >
           Nova ocorrência
         </Button>
-        <Table size="small" aria-label="tabela de ocorrências">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>Data</StyledTableCell>
-              <StyledTableCell>Conduta</StyledTableCell>
-              <StyledTableCell>Fato observado</StyledTableCell>
-              <StyledTableCell>Medida</StyledTableCell>
-              <StyledTableCell align="right">Valor</StyledTableCell>
-              <StyledTableCell align="center"></StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {_.isEmpty(ocorrenciasSorted) && (
-              <Typography variant="inherit" style={myStyle.messageEmpty}>
-                Não há ocorrências
-              </Typography>
-            )}
-            {ocorrenciasSorted
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((ocorrencia) => {
-                const condutaStyle =
-                  ocorrencia.conduta === 'NEGATIVA'
-                    ? classes.badColor
-                    : classes.greatColor;
-                return (
-                  <StyledTableRow key={ocorrencia._id}>
-                    <StyledTableCell
-                      component="th"
-                      scope="ocorrencia"
-                      style={{ width: '50px' }}
-                    >
-                      {format.formatDateBr(ocorrencia.data)}
-                    </StyledTableCell>
-                    <StyledTableCell
-                      className={condutaStyle}
-                      style={{ width: '50px' }}
-                    >
-                      {ocorrencia.conduta}
-                    </StyledTableCell>
-                    <StyledTableCell>
-                      {ocorrencia.fato_observado}
-                    </StyledTableCell>
-                    {/* <StyledTableCell style={{ whiteSpace: 'nowrap' }}> */}
-                    <StyledTableCell>{ocorrencia.medida}</StyledTableCell>
-                    <StyledTableCell align="right">
-                      {ocorrencia.valor}
-                    </StyledTableCell>
-                    <StyledTableCell align="center">
-                      <IconButton
-                        onClick={(event) => hadleDelete(event, ocorrencia._id)}
-                      >
-                        <IconDelete color="error" />
-                      </IconButton>
-                    </StyledTableCell>
-                  </StyledTableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-        <ThemeProvider theme={theme}>
-          <Paper className={classes.paper}>
-            <TablePagination
-              style={{ fontSize: 11 }}
-              rowsPerPageOptions={[6, 12, 24]}
-              component="div"
-              count={ocorrencias.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              onChangePage={handleChangePage}
-              onChangeRowsPerPage={handleChangeRowsPerPage}
-            />
-          </Paper>
-        </ThemeProvider>
-      </TableContainer>
 
+        <div>
+          <TableContainer>
+            <Table size="small" aria-label="tabela de ocorrências">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell>Data</StyledTableCell>
+                  <StyledTableCell>Conduta</StyledTableCell>
+                  <StyledTableCell>Fato observado</StyledTableCell>
+                  <StyledTableCell>Medida</StyledTableCell>
+                  <StyledTableCell align="right">Valor</StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {_.isEmpty(ocorrenciasSorted) && (
+                  <Typography variant="inherit" style={myStyle.messageEmpty}>
+                    Não há ocorrências
+                  </Typography>
+                )}
+                {ocorrenciasSorted
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((ocorrencia) => {
+                    const condutaStyle =
+                      ocorrencia.conduta === 'NEGATIVA'
+                        ? classes.badColor
+                        : classes.greatColor;
+                    return (
+                      <StyledTableRow key={ocorrencia._id}>
+                        <StyledTableCell
+                          component="th"
+                          scope="ocorrencia"
+                          style={{ width: '50px' }}
+                        >
+                          {format.formatDateBr(ocorrencia.data)}
+                        </StyledTableCell>
+                        <StyledTableCell
+                          className={condutaStyle}
+                          style={{ width: '50px' }}
+                        >
+                          {ocorrencia.conduta}
+                        </StyledTableCell>
+                        <StyledTableCell>
+                          {ocorrencia.fato_observado}
+                        </StyledTableCell>
+                        {/* <StyledTableCell style={{ whiteSpace: 'nowrap' }}> */}
+                        <StyledTableCell>{ocorrencia.medida}</StyledTableCell>
+                        <StyledTableCell align="right">
+                          {ocorrencia.valor}
+                        </StyledTableCell>
+                        <StyledTableCell align="center">
+                          <IconButton
+                            onClick={(event) =>
+                              hadleDelete(event, ocorrencia._id)
+                            }
+                          >
+                            <IconDelete color="error" />
+                          </IconButton>
+                        </StyledTableCell>
+                      </StyledTableRow>
+                    );
+                  })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <ThemeProvider theme={theme}>
+            <Paper className={classes.paper}>
+              <TablePagination
+                style={{ fontSize: 11 }}
+                rowsPerPageOptions={[6, 12, 24]}
+                component="div"
+                count={ocorrencias.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                onChangePage={handleChangePage}
+                onChangeRowsPerPage={handleChangeRowsPerPage}
+              />
+            </Paper>
+          </ThemeProvider>
+        </div>
+      </div>
       {/* Modal here! */}
       {modal.modalName === 'Occurrence' && (
         <ReactModal open={modal.visible}>
@@ -174,7 +181,7 @@ export default function StudentOccurrences(props) {
         title="Exclusão de ocorrência"
         message="Confirma exclusão da ocorrência selecionada?"
       />
-    </>
+    </div>
   );
 }
 
@@ -189,6 +196,20 @@ const theme = createMuiTheme(
 
 // eslint-disable-next-line no-unused-vars
 const useStyles = makeStyles((theme) => ({
+  tableSize2: {
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: 1,
+    width: 'auto'
+  },
+  tablex: {
+    minHeight: '100vh',
+    maxWidth: '100vh'
+  },
+  table: {
+    backgroundSize: 'cover',
+    position: 'relative !important'
+  },
   greatColor: {
     color: '#079992'
   },

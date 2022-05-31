@@ -15,7 +15,7 @@ const rootReducers = combineReducers({
   toastr: toastrReducer,
   dashboard: dashboardReducer,
   table: tablesReducer,
-  auth: authReducer,
+  auth: authReducer
 });
 
 export default rootReducers;

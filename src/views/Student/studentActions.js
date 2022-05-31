@@ -14,72 +14,95 @@ import {
   EDIT_STUDENT_REQUEST,
   EDIT_STUDENT_SUCCESS,
   EDIT_STUDENT_FAILURE,
+  ADD_STUDENT_AVATAR_REQUEST,
+  ADD_STUDENT_AVATAR_SUCCESS,
+  ADD_STUDENT_AVATAR_FAILURE
 } from './studentTypes';
 
 export const fetchStudentsRequest = () => {
   return {
-    type: FETCH_STUDENTS_REQUEST,
+    type: FETCH_STUDENTS_REQUEST
   };
 };
 
 export const fetchStudentsSuccess = (students) => {
   return {
     type: FETCH_STUDENTS_SUCCESS,
-    payload: students,
+    payload: students
   };
 };
 
 export const fetchStudentsFailure = (errors) => {
   return {
     type: FETCH_STUDENTS_FAILURE,
-    payload: errors,
+    payload: errors
   };
 };
 
 export const currentStudent = (student) => {
   return {
     type: CURRENT_STUDENT,
-    payload: student,
+    payload: student
   };
 };
 
 export const addStudentRequest = () => {
   return {
-    type: ADD_STUDENT_REQUEST,
+    type: ADD_STUDENT_REQUEST
   };
 };
 
 export const addStudentSuccess = (student) => {
   return {
     type: ADD_STUDENT_SUCCESS,
-    payload: student,
+    payload: student
   };
 };
 
 export const addStudentFailure = (errors) => {
   return {
     type: ADD_STUDENT_FAILURE,
-    payload: errors,
+    payload: errors
   };
 };
 
 export const editStudentRequest = () => {
   return {
-    type: EDIT_STUDENT_REQUEST,
+    type: EDIT_STUDENT_REQUEST
   };
 };
 
 export const editStudentSuccess = (student) => {
   return {
     type: EDIT_STUDENT_SUCCESS,
-    payload: student,
+    payload: student
   };
 };
 
 export const editStudentFailure = (errors) => {
   return {
     type: EDIT_STUDENT_FAILURE,
-    payload: errors,
+    payload: errors
+  };
+};
+
+export const addStudentAvatarRequest = () => {
+  return {
+    type: ADD_STUDENT_AVATAR_REQUEST
+  };
+};
+
+export const addStudentAvatarSuccess = (student) => {
+  return {
+    type: ADD_STUDENT_AVATAR_SUCCESS,
+    payload: student
+  };
+};
+
+export const addStudentAvatarFailure = (errors) => {
+  return {
+    type: ADD_STUDENT_AVATAR_FAILURE,
+    payload: errors
   };
 };
 
@@ -116,7 +139,7 @@ export const addStudent = (newStudent) => {
         dispatch([
           addStudentSuccess(student),
           visibleModal(false),
-          fetchCountStudents,
+          fetchCountStudents
         ]);
         toastr.success('Sucesso', 'Cadastro realizado com sucesso.');
       })
@@ -145,5 +168,26 @@ export const editStudent = (studentToUpdate) => {
       dispatch([editStudentFailure(errors), visibleModal(true)]);
       errors.forEach((error) => toastr.error('Erro', error));
     }
+  };
+};
+
+export const addStudentAvatar = (id, namePath, forData) => {
+  return (dispatch) => {
+    dispatch(addStudentAvatarRequest);
+
+    api
+      .saveAvatar(id, namePath, forData)
+      .then((response) => {
+        const student = response.data;
+        dispatch(addStudentAvatarSuccess(student));
+
+        toastr.success('Sucesso', 'Atualização realizada com sucesso.');
+      })
+      .catch((error) => {
+        const errors = error.response.data.errors;
+
+        dispatch(addStudentAvatarFailure(errors));
+        errors.forEach((error) => toastr.error('Erro', error));
+      });
   };
 };

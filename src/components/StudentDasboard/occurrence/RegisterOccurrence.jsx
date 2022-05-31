@@ -22,7 +22,7 @@ export default function RegisterOccurrence({ onClose }) {
     fato_observado: '',
     conduta: '',
     medida: '',
-    valor: 0,
+    valor: 0
   };
 
   const student = useSelector((state) => state.student.student);
@@ -38,7 +38,7 @@ export default function RegisterOccurrence({ onClose }) {
 
   useEffect(() => {
     getMeasures();
-  }, []);
+  }, [getMeasures]);
 
   const handleModalClose = () => {
     onClose(true);
@@ -54,7 +54,7 @@ export default function RegisterOccurrence({ onClose }) {
       setOccurrence({
         ...occurrence,
         medida: selectedMedida.descricao,
-        valor: selectedMedida.valor,
+        valor: selectedMedida.valor
       });
     } else {
       setOccurrence({ ...occurrence, [name]: value });
@@ -111,7 +111,7 @@ export default function RegisterOccurrence({ onClose }) {
               value={format.formatDateToField(occurrence.data)}
               onChange={handleChangeValue}
               InputLabelProps={{
-                shrink: true,
+                shrink: true
               }}
             />
             <br />
@@ -218,45 +218,45 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'right',
     justifyContent: 'space-between',
-    marginBottom: '0px',
+    marginBottom: '0px'
   },
   flexFooter: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'right',
     justifyContent: 'space-between',
-    marginBottom: '15px',
+    marginBottom: '15px'
   },
   greatColor: {
-    color: '#079992',
+    color: '#079992'
   },
   badColor: {
-    color: '#eb3b5a',
-  },
+    color: '#eb3b5a'
+  }
 };
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
+    width: '100%'
   },
   formatLayout: {
     margin: theme.spacing(1),
-    marginTop: '60px',
+    marginTop: '60px'
   },
   twoElements: {
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'flex-start'
   },
   spaceTop: {
-    marginTop: '20px',
+    marginTop: '20px'
   },
   formControlConduta: {
-    width: '41ch',
+    width: '41ch'
   },
   formControlMedida: {
     width: '41ch',
-    marginRight: '20px',
-  },
+    marginRight: '20px'
+  }
 }));

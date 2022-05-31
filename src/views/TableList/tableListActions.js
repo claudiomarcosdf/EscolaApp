@@ -80,7 +80,7 @@ export const fetchMeasures = () => {
       .getTableMeasure()
       .then((response) => {
         const measures = response.data.sort((a, b) => {
-          if (a.tipo_conduta == b.tipo_conduta) {
+          if (a.tipo_conduta === b.tipo_conduta) {
             return a.valor - b.valor;
           } else {
             return a.tipo_conduta.localeCompare(b.tipo_conduta);

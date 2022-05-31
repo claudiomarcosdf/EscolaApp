@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MaskedInput from 'react-text-mask';
 
 CpfMask.propTypes = {
-  inputRef: PropTypes.func.isRequired,
+  inputRef: PropTypes.func.isRequired
 };
 
 export default function CpfMask(props) {

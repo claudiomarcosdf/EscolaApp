@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { toastr } from 'react-redux-toastr';
 import axios from 'axios';
 
@@ -12,8 +13,9 @@ export function signup(values) {
 }
 
 function submit(values, url) {
-  console.log(values);
   return (dispatch) => {
+    dispatch({ type: 'USER_LOADING' });
+
     axios
       .post(url, values)
       .then((resp) => {
@@ -21,8 +23,23 @@ function submit(values, url) {
         dispatch([{ type: 'USER_FETCHED', payload: resp.data }]);
       })
       .catch((err) => {
-        console.log(err.response);
-        err.response.data.errors.forEach((error) => {
+        let errors = [];
+
+        if (!err.response) {
+          const message = JSON.stringify(err.message);
+          if (message.match(/Network/)) {
+            errors.push('Servidor indisponível');
+          } else {
+            errors.push('Erro inesperado.');
+          }
+        } else {
+          errors = err.response.data.errors;
+        }
+
+        dispatch({ type: 'USER_FETCH_FAILURE' });
+
+        // err.response.data.errors.forEach
+        errors.forEach((error) => {
           toastr.error('Erro', error);
         });
       });
@@ -51,6 +68,6 @@ export function validateToken(token) {
 export function openSignup(value) {
   return {
     type: 'OPEN_SIGNUP',
-    payload: value,
+    payload: value
   };
 }

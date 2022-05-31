@@ -7,7 +7,7 @@ import {
   FETCH_BEHAVIORS_FAILURE,
   FETCH_TRANSGRESSIONS_REQUEST,
   FETCH_TRANSGRESSIONS_SUCCESS,
-  FETCH_TRANSGRESSIONS_FAILURE,
+  FETCH_TRANSGRESSIONS_FAILURE
 } from './tableListTypes';
 
 const initialState = {
@@ -15,7 +15,7 @@ const initialState = {
   tableMeasures: [],
   tableBehaviors: [],
   tableTransgressions: [],
-  errors: [],
+  errors: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -23,58 +23,58 @@ const reducer = (state = initialState, action) => {
     case FETCH_MEASURES_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: true
       };
     case FETCH_MEASURES_SUCCESS:
       return {
         ...state,
         loading: false,
-        tableMeasures: action.payload,
+        tableMeasures: action.payload
       };
     case FETCH_MEASURES_FAILURE:
       return {
         ...state,
         loading: false,
         tableMeasures: [],
-        errors: action.payload,
+        errors: action.payload
       };
 
     case FETCH_BEHAVIORS_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: true
       };
     case FETCH_BEHAVIORS_SUCCESS:
       return {
         ...state,
         loading: false,
-        tableBehaviors: action.payload,
+        tableBehaviors: action.payload
       };
     case FETCH_BEHAVIORS_FAILURE:
       return {
         ...state,
         loading: false,
         tableBehaviors: [],
-        errors: action.payload,
+        errors: action.payload
       };
 
     case FETCH_TRANSGRESSIONS_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: true
       };
     case FETCH_TRANSGRESSIONS_SUCCESS:
       return {
         ...state,
         loading: false,
-        tableTransgressions: action.payload,
+        tableTransgressions: action.payload
       };
     case FETCH_TRANSGRESSIONS_FAILURE:
       return {
         ...state,
         loading: false,
         tableTransgressions: [],
-        errors: action.payload,
+        errors: action.payload
       };
 
     default:
