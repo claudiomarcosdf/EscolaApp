@@ -32,7 +32,7 @@ const dashboardRoutes = [
   {
     path: '/observador',
     name: 'Observador',
-    title: 'Cadastro de observadores',
+    title: 'Cadastro de observador',
     icon: WatcherPerson,
     component: Watcher,
     layout: '/admin'
