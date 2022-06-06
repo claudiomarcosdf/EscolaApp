@@ -6,6 +6,7 @@ import modalReducer from './views/Modal/modalReducer';
 import occurrenceReducer from './views/Occurrence/occurrenceReducer';
 import dashboardReducer from './views/Dashboard/dashboardReducer';
 import tablesReducer from './views/TableList/tableListReducer';
+import watcherReducer from './views/Watcher/watcherReducer';
 import authReducer from './views/Auth/authReducer';
 
 const rootReducers = combineReducers({
@@ -15,6 +16,7 @@ const rootReducers = combineReducers({
   toastr: toastrReducer,
   dashboard: dashboardReducer,
   table: tablesReducer,
+  watcher: watcherReducer,
   auth: authReducer
 });
 

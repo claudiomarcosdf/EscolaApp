@@ -6,12 +6,23 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles({
+  dialog: {
+    position: 'absolute',
+    left: 400,
+    top: 50
+  }
+});
+
 export default function CustomDialog({
   onClose,
   onConfirm,
   open,
   title,
-  message
+  message,
+  position
 }) {
   const handleClose = () => {
     onClose(null);
@@ -21,13 +32,17 @@ export default function CustomDialog({
     onConfirm(null);
   };
 
+  const classes = useStyles();
+
   return (
     <div>
+      {console.log(position)}
       <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        classes={position ? { paper: classes.dialog } : ''}
       >
         <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
         <DialogContent>
