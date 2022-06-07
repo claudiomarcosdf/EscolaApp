@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Card from 'components/Card/Card';
@@ -26,25 +26,21 @@ import CustomDialog from '../../Dialog/CustomDialog';
 
 import {
   fetchWatchers,
-  currentWatcher
+  currentWatcher,
+  fetchNewWatcher
 } from '../../../views/Watcher/watcherActions';
 
 function WatcherList() {
+  const watchers = useSelector((state) => state.watcher.watchers);
+  const dispatch = useDispatch();
+
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [openDialog, setOpenDialog] = useState(false);
 
-  const watchers = useSelector((state) => state.watcher.watchers);
-  const dispatch = useDispatch();
-
-  // const getWatchers = useCallback(() => {
-  //   dispatch(fetchWatchers());
-  // }, []);
-
   useEffect(() => {
-    // getWatchers();
     dispatch(fetchWatchers());
-  }, [dispatch]);
+  }, []);
 
   const handleDelete = (event, id) => {
     setOpenDialog(true);
@@ -56,7 +52,7 @@ function WatcherList() {
   };
 
   const handleNew = () => {
-    dispatch(currentWatcher({}));
+    dispatch(fetchNewWatcher());
   };
 
   const handleChangePage = (event, newPage) => {
@@ -106,7 +102,7 @@ function WatcherList() {
             <TableBody>
               {_.isEmpty(watchers) && (
                 <Typography variant="inherit" style={myStyle.messageEmpty}>
-                  Não há ocorrências
+                  Nenhum observador cadastrado
                 </Typography>
               )}
               {watchers
