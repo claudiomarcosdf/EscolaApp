@@ -149,6 +149,7 @@ function GeralDataForm({ handleNextPage }) {
             <FormControl className={classes.formControlFuncao}>
               <InputLabel id="select-label">Função</InputLabel>
               <Select
+                native
                 labelId="select-label"
                 id="funcao"
                 name="funcao"
@@ -158,9 +159,9 @@ function GeralDataForm({ handleNextPage }) {
               >
                 {funcoes.map((funcao, index) => {
                   return (
-                    <MenuItem value={funcao} key={index}>
+                    <option value={funcao} key={index}>
                       {funcao}
-                    </MenuItem>
+                    </option>
                   );
                 })}
               </Select>
