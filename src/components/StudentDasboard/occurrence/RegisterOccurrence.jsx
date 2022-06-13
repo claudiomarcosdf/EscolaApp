@@ -202,7 +202,11 @@ export default function RegisterOccurrence({ onClose }) {
               >
                 {watchers.map((watcher, index) => {
                   return (
-                    <MenuItem value={watcher._id} key={index} dense>
+                    <MenuItem
+                      value={`${watcher.nome} - ${watcher.funcao}`}
+                      key={index}
+                      dense
+                    >
                       <span>{`${watcher.nome} - ${watcher.funcao}`}</span>
                     </MenuItem>
                   );
@@ -221,7 +225,8 @@ export default function RegisterOccurrence({ onClose }) {
               !(
                 occurrence.fato_observado.length > 0 &&
                 occurrence.conduta.length > 0 &&
-                occurrence.medida.length > 0
+                occurrence.medida.length > 0 &&
+                occurrence.observador.length > 0
               )
             }
           >

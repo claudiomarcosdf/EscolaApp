@@ -123,9 +123,21 @@ export default function StudentProfile(props) {
           >
             {student.nome}
           </Typography>
-          <span className={`${classes.description}`}>
-            Gênero: {student.genero == 'M' ? 'Masculino' : 'Feminino'}
-          </span>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <span className={`${classes.description}`}>
+              Gênero: {student.genero == 'M' ? 'Masculino' : 'Feminino'}
+            </span>
+            <span>
+              Situação:{' '}
+              <span
+                className={
+                  student.situacao === 'inativo' ? classes.inative : ''
+                }
+              >
+                {format.capitalize(student.situacao)}
+              </span>
+            </span>
+          </div>
           <h5
             className={classes.cardTitle}
           >{`${student.classe.ano} ano - ${student.classe.serie}`}</h5>
@@ -206,5 +218,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
     display: 'flex'
+  },
+  inative: {
+    color: '#d63031'
   }
 }));
