@@ -17,12 +17,14 @@ import IconEdit from '@material-ui/icons/EditOutlined';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
 import IconAdd from '@material-ui/icons/Add';
+import Chip from '@material-ui/core/Chip';
 
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { ptBR } from '@material-ui/core/locale';
 import _ from 'lodash';
 import CustomDialog from '../../Dialog/CustomDialog';
+import * as format from '../../../helpers/formatHelpers';
 
 import {
   fetchWatchers,
@@ -96,6 +98,7 @@ function WatcherList() {
                 <StyledTableCell>Matrícula</StyledTableCell>
                 <StyledTableCell>Nome</StyledTableCell>
                 <StyledTableCell>Função</StyledTableCell>
+                <StyledTableCell>Situação</StyledTableCell>
                 <StyledTableCell align="center"></StyledTableCell>
               </TableRow>
             </TableHead>
@@ -113,17 +116,29 @@ function WatcherList() {
                       <StyledTableCell
                         component="th"
                         scope="watcher"
-                        style={{ width: '10%' }}
+                        style={{ width: '5%' }}
                       >
                         {watcher.matricula}
                       </StyledTableCell>
-                      <StyledTableCell style={{ width: '40%' }}>
+                      <StyledTableCell style={{ width: '35%' }}>
                         {watcher.nome}
                       </StyledTableCell>
-                      <StyledTableCell style={{ width: '15%' }}>
+                      <StyledTableCell style={{ width: '10%' }}>
                         {watcher.funcao}
                       </StyledTableCell>
-                      <StyledTableCell align="center" style={{ width: '60px' }}>
+                      <StyledTableCell style={{ width: '5%' }} align="center">
+                        <Chip
+                          variant="outlined"
+                          size="small"
+                          label={format.capitalize(watcher.situacao)}
+                          color={
+                            watcher.situacao !== 'ativo'
+                              ? 'secondary'
+                              : 'default'
+                          }
+                        />
+                      </StyledTableCell>
+                      <StyledTableCell align="center" style={{ width: '25%' }}>
                         <div>
                           <Tooltip title="Excluir">
                             <IconButton
@@ -132,7 +147,7 @@ function WatcherList() {
                                 handleDelete(event, watcher._id)
                               }
                             >
-                              <IconDelete color="error" />
+                              <IconDelete color="error" fontSize="small" />
                             </IconButton>
                           </Tooltip>
                           <Tooltip title="Editar">
@@ -140,7 +155,7 @@ function WatcherList() {
                               aria-label="editar"
                               onClick={() => handleEdit(watcher)}
                             >
-                              <IconEdit color="primary" />
+                              <IconEdit color="primary" fontSize="small" />
                             </IconButton>
                           </Tooltip>
                         </div>

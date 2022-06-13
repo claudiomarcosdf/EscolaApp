@@ -14,6 +14,8 @@ import IconButton from '@material-ui/core/IconButton';
 import IconDelete from '@material-ui/icons/DeleteForever';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import IconWatcherPerson from '@material-ui/icons/SupervisorAccountOutlined';
+import Tooltip from '@material-ui/core/Tooltip';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { ptBR } from '@material-ui/core/locale';
 
@@ -22,8 +24,9 @@ import * as format from '../../helpers/formatHelpers';
 import { visibleModal, actualModal } from '../../views/Modal/modalActions';
 import { deleteOccurrence } from '../../views/Occurrence/occurrenceActions';
 import ReactModal from '../Modal/ReactModal';
-import RegisterOccurrence from './occurrence/RegisterOccurrence';
 import CustomDialog from '../Dialog/CustomDialog';
+import SimpleDialog from '../Dialog/SimpleDialog';
+import RegisterOccurrence from './occurrence/RegisterOccurrence';
 
 export default function StudentOccurrences(props) {
   const { ocorrencias } = props;
@@ -32,6 +35,7 @@ export default function StudentOccurrences(props) {
   const [rowsPerPage, setRowsPerPage] = useState(6);
   const [idOccurrence, setIdOccurrence] = useState(0);
   const [openDialog, setOpenDialog] = useState(false);
+  const [simpleDialog, setSimpleDialog] = useState({ open: false, text: '' });
   const modal = useSelector((state) => state.modal);
   const dispatch = useDispatch();
 
@@ -133,11 +137,30 @@ export default function StudentOccurrences(props) {
                       {ocorrencia.valor}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      <IconButton
-                        onClick={(event) => hadleDelete(event, ocorrencia._id)}
-                      >
-                        <IconDelete color="error" />
-                      </IconButton>
+                      <div style={{ display: 'flex' }}>
+                        <IconButton
+                          onClick={(event) =>
+                            hadleDelete(event, ocorrencia._id)
+                          }
+                        >
+                          <IconDelete color="error" fontSize="small" />
+                        </IconButton>
+                        <Tooltip title="Observador">
+                          <IconButton
+                            onClick={() =>
+                              setSimpleDialog({
+                                open: true,
+                                text: ocorrencia.observador
+                              })
+                            }
+                          >
+                            <IconWatcherPerson
+                              color="primary"
+                              fontSize="small"
+                            />
+                          </IconButton>
+                        </Tooltip>
+                      </div>
                     </StyledTableCell>
                   </StyledTableRow>
                 );
@@ -173,6 +196,12 @@ export default function StudentOccurrences(props) {
         onConfirm={handleConfirmDialog}
         title="Exclusão de ocorrência"
         message="Confirma exclusão da ocorrência selecionada?"
+      />
+      <SimpleDialog
+        open={simpleDialog.open}
+        onClose={() => setSimpleDialog({ open: false, text: '' })}
+        title="Observador do fato"
+        message={simpleDialog.text}
       />
     </>
   );

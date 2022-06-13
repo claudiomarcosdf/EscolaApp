@@ -13,6 +13,7 @@ import moment from 'moment';
 import * as format from '../../../helpers/formatHelpers';
 import { addOccurrence } from '../../../views/Occurrence/occurrenceActions';
 import { fetchMeasures } from '../../../views/TableList/tableListActions';
+import { fetchWatchers } from '../../../views/Watcher/watcherActions';
 
 export default function RegisterOccurrence({ onClose }) {
   const nowDate = moment().format('YYYY-MM-DD');
@@ -22,23 +23,26 @@ export default function RegisterOccurrence({ onClose }) {
     fato_observado: '',
     conduta: '',
     medida: '',
-    valor: 0
+    valor: 0,
+    observador: ''
   };
 
   const student = useSelector((state) => state.student.student);
   const tableMeasures = useSelector((state) => state.table.tableMeasures);
+  const watchers = useSelector((state) => state.watcher.watchers);
   const dispatch = useDispatch();
 
   const [occurrence, setOccurrence] = useState(newOccurrence);
   const [currentMeasures, setCurrentMeasures] = useState([]);
 
-  const getMeasures = useCallback(() => {
+  const getLists = useCallback(() => {
     dispatch(fetchMeasures());
+    dispatch(fetchWatchers());
   }, [dispatch]);
 
   useEffect(() => {
-    getMeasures();
-  }, [getMeasures]);
+    getLists();
+  }, [getLists]);
 
   const handleModalClose = () => {
     onClose(true);
@@ -184,6 +188,28 @@ export default function RegisterOccurrence({ onClose }) {
               onChange={handleChangeValue}
             />
           </div>
+          <div className={`${classes.twoElements} ${classes.spaceTop}`}>
+            <FormControl className={classes.formControlConduta}>
+              <InputLabel id="select-label">Observador</InputLabel>
+              <Select
+                required
+                labelId="select-label"
+                id="observador"
+                name="observador"
+                value={occurrence.observador}
+                onChange={handleChangeValue}
+                MenuProps={MenuProps}
+              >
+                {watchers.map((watcher, index) => {
+                  return (
+                    <MenuItem value={watcher._id} key={index} dense>
+                      <span>{`${watcher.nome} - ${watcher.funcao}`}</span>
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+            </FormControl>
+          </div>
         </div>
 
         <div style={styles.flexFooter} className={classes.formatLayout}>
@@ -211,6 +237,17 @@ export default function RegisterOccurrence({ onClose }) {
 }
 
 const condutas = ['NEGATIVA', 'POSITIVA', 'NEUTRA'];
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250
+    }
+  }
+};
 
 const styles = {
   flexRow: {
