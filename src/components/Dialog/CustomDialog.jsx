@@ -36,7 +36,6 @@ export default function CustomDialog({
 
   return (
     <div>
-      {console.log(position)}
       <Dialog
         open={open}
         onClose={handleClose}
