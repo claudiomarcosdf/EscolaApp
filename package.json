@@ -3,7 +3,7 @@
   "version": "1.9.0",
   "description": "Sistema escolar cívico-militar",
   "private": false,
-  "main": "dist/index.js",
+  "main": "index.js",
   "dependencies": {
     "@material-ui/core": "4.10.0",
     "@material-ui/icons": "4.9.1",
@@ -37,15 +37,14 @@
     "dev": "set PORT=8080 && react-scripts start",
     "start": "react-scripts start",
     "build": "webpack -p",
-    "build-package-css": "cp src/assets/css/material-dashboard-react.css dist/material-dashboard-react.css",
-    "build-package": "npm run babel src --out-dir dist && build-package-css",	
-    "heroku-postbuild": "npm run build-package",
+    "heroku-postbuild": "npm run build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
     "lint:check": "eslint . --ext=js,jsx;  exit 0",
-    "lint:fix": "eslint . --ext=js,jsx --fix;  exit 0"
-
+    "lint:fix": "eslint . --ext=js,jsx --fix;  exit 0",
+    "build-package-css": "cp src/assets/css/material-dashboard-react.css dist/material-dashboard-react.css",
+    "build-package": "npm run babel src --out-dir dist && build-package-css"
   },
   "keywords": [],
   "optionalDependencies": {
