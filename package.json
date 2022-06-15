@@ -34,8 +34,10 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "set PORT=8080 && react-scripts start",
-    "build": "react-scripts build",
+    "dev": "set PORT=8080 && react-scripts start",
+    "start": "node dist/index.js",
+    "build": "webpack -p",
+    "heroku-postbuild": "npm run build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
