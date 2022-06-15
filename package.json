@@ -3,7 +3,7 @@
   "version": "1.9.0",
   "description": "Sistema escolar cívico-militar",
   "private": false,
-  "main": "index.js",
+  "main": "src/index.js",
   "dependencies": {
     "@material-ui/core": "4.10.0",
     "@material-ui/icons": "4.9.1",
@@ -36,8 +36,7 @@
   "scripts": {
     "dev": "set PORT=8080 && react-scripts start",
     "start": "react-scripts start",
-    "build": "webpack -p",
-    "heroku-postbuild": "npm run build",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
